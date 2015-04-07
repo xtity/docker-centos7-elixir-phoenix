@@ -35,6 +35,33 @@ docker run -d -p 80:4000 --name phoenix -t local/project
 boot2docker ip
 ```
 
+## Usage
+See the Demo. But if you already know the [DockerHub](https://registry.hub.docker.com/u/xtity/docker-centos7-elixir-phoenix/), the usage is Super Easy. Take a look below.
+
+```bash
+## Run Phoenix Server
+docker run -d -p 80:4000 --name phoenix -t xtity/docker-centos7-elixir-phoenix
+```
+__Just 1 steps__ to make a VM with Elixir and Phoenix :)
+
+## TIPS
+### boot2docker setting
+The boot2docker requires these environmental variables.
+
+* DOCKER_CERT_PATH
+* DOCKER_TLS_VERIFY
+* DOCKER_HOST
+
+We could ```export``` these vars in every time we use boot2docker.
+But This way isn't handy.  
+For example, you could execute the below command to set these in ```.bash_profile```.  
+
+```bash
+echo -e '\n# boot2docker config\nif [ "`boot2docker status`" = "running" ]; then\n    $(boot2docker shellinit 2>/dev/null)\nfi\n' >> ~/.bash_profile
+```
+
+Try it :)
+
 ## Licence
 
 [The MIT License (MIT)](https://github.com/xtity/docker-centos7-elixir-phoenix/blob/master/LICENSE)

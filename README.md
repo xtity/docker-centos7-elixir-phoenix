@@ -1,6 +1,6 @@
 # docker-centos7-elixir-phoenix
 
-This is a Docker image project with CentOS, Elixir, and Phoenix.  
+This is a Docker image project with CentOS 7, Elixir, and Phoenix.  
 
 ## Requirement
 ### Installed these

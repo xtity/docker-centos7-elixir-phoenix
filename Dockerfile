@@ -74,6 +74,6 @@ RUN yes | mix local.hex && yes | mix local.rebar && mix do deps.get && MIX_ENV=p
 # Run Phoenix on Cowboy server(FOR dev)
 #CMD ["/bin/bash", "-c", "mix phoenix.server"]
 # Run Phoenix on Cowboy server(FOR prod)
-CMD ["/bin/bash", "-c", "MIX_ENV=prod PORT=4000 elixir -pa _build/prod/consolidated -S mix phoenix.server"]
+CMD ["/bin/bash", "-c", "MIX_ENV=prod PORT=${PHOENIX_APP_PORT} elixir -pa _build/prod/consolidated -S mix phoenix.server"]
 ########## ON BOOT ##########
 

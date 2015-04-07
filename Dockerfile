@@ -60,11 +60,20 @@ RUN mix phoenix.new /usr/local/src/${PHOENIX_APP_NAME}
 # Create phoenix project
 WORKDIR /usr/local/src/${PHOENIX_APP_NAME}
 RUN npm install
-RUN yes | mix local.hex && yes | mix local.rebar && mix do deps.get, compile
+RUN npm install -g brunch
+RUN brunch build
+
+# Compile phoenix(FOR dev)
+#RUN yes | mix local.hex && yes | mix local.rebar && mix do deps.get, compile
+# Compile phoenix(FOR prod)
+RUN yes | mix local.hex && yes | mix local.rebar && mix do deps.get && MIX_ENV=prod mix compile.protocols
 ########## PHOENIX ##########
 
 
 ########## ON BOOT ##########
-CMD ["/bin/bash", "-c", "mix phoenix.server"]
+# Run Phoenix on Cowboy server(FOR dev)
+#CMD ["/bin/bash", "-c", "mix phoenix.server"]
+# Run Phoenix on Cowboy server(FOR prod)
+CMD ["/bin/bash", "-c", "MIX_ENV=prod PORT=4000 elixir -pa _build/prod/consolidated -S mix phoenix.server"]
 ########## ON BOOT ##########
 

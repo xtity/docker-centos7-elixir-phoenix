@@ -1,5 +1,4 @@
 # docker-centos7-elixir-phoenix
-==================
 
 This is a Docker image project with CentOS, Elixir, and Phoenix.  
 

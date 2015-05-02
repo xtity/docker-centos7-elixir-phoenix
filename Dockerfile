@@ -36,10 +36,18 @@ RUN yum install -y git && yum clean all
 
 
 ########## ELIXIR ##########
+# Build Elixir
 RUN git clone https://github.com/elixir-lang/elixir.git
 WORKDIR /usr/local/src/elixir
 RUN git checkout refs/tags/v${ELIXIR_VERSION}
 RUN make clean install
+
+# Build Mix Tasks to use Dialyxir
+WORKDIR /usr/local/src
+RUN git clone --depth 2 https://github.com/jeremyjh/dialyxir.git
+WORKDIR /usr/local/src/dialyxir
+RUN mix archive.build
+RUN yes | mix archive.install dialyxir-0.2.6.ez && mix dialyzer.plt
 ########## ELIXIR ##########
 
 

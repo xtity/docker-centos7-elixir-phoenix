@@ -31,7 +31,7 @@ WORKDIR /usr/local/src
 
 RUN yum install -y gcc gcc-c++ make openssl-devel ncurses-devel
 RUN yum install -y epel-release && yum clean all
-RUN yum install -y http://packages.erlang-solutions.com/site/esl/esl-erlang/FLAVOUR_3_general/esl-erlang_17.4-1~centos~7_amd64.rpm && yum clean all
+RUN yum install -y http://packages.erlang-solutions.com/site/esl/esl-erlang/FLAVOUR_3_general/esl-erlang_17.5-1~centos~7_amd64.rpm && yum clean all
 RUN yum install -y git && yum clean all
 ########## MIDDLEWARE ##########
 

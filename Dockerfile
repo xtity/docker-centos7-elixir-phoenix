@@ -32,7 +32,6 @@ RUN mix phoenix.new ${PHOENIX_APP_NAME}
 WORKDIR /usr/local/src/phoenix/app/${PHOENIX_APP_NAME}
 RUN npm install
 RUN npm install -g brunch
-RUN brunch build
 
 # Add exrm dependency
 RUN sed -i "s/\({:cowboy,.*}\)]/\1, {:exrm, \"~> 0.14.16\"}]/g" mix.exs
@@ -43,7 +42,7 @@ RUN sed -i "s/^config\(.*\).Endpoint,/config \1.Endpoint, server: true,/g" confi
 # Compile phoenix(FOR dev)
 #RUN yes | mix local.hex && yes | mix local.rebar && mix do deps.get, compile
 # Compile phoenix(FOR prod)
-RUN yes | mix local.hex && yes | mix local.rebar && mix do deps.get && mix phoenix.digest && MIX_ENV=prod mix release
+RUN yes | mix local.hex && yes | mix local.rebar && mix do deps.get && brunch build && mix phoenix.digest && MIX_ENV=prod mix release
 ########## PHOENIX ##########
 
 

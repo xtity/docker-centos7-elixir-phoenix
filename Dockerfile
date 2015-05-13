@@ -52,4 +52,3 @@ RUN yes | mix local.hex && yes | mix local.rebar && mix do deps.get && brunch bu
 # Run Phoenix on Cowboy server(FOR prod)
 CMD ["/bin/bash", "-c", "PORT=${PHOENIX_APP_PORT} rel/${PHOENIX_APP_NAME}/bin/${PHOENIX_APP_NAME} foreground"]
 ########## ON BOOT ##########
-
